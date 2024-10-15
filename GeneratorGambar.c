@@ -28,25 +28,6 @@ void drawTriangle(int height) {
     }
 }
 
-// Fungsi untuk menggambar belah ketupat
-void drawDiamond(int size) {
-    int i, j;
-
-    // Bagian atas diamond
-    for (i = 0; i < size; i++) {
-        for (j = 0; j < size - i - 1; j++) printf(" ");  // Spasi
-        for (j = 0; j < 2 * i + 1; j++) printf("*");      // Karakter '*'
-        printf("\n");
-    }
-
-    // Bagian bawah diamond
-    for (i = size - 2; i >= 0; i--) {
-        for (j = 0; j < size - i - 1; j++) printf(" ");  // Spasi
-        for (j = 0; j < 2 * i + 1; j++) printf("*");      // Karakter '*'
-        printf("\n");
-    }
-}
-
 // Fungsi untuk validasi ukuran input
 int validateSize(int width, int height) {
     if (width < MIN_WIDTH || width > MAX_WIDTH) {
@@ -66,7 +47,7 @@ int main() {
 
     while (1) {
         // Meminta input jenis gambar
-        printf("Masukkan jenis gambar (rectangle/triangle/diamond) atau 'exit' untuk keluar: ");
+        printf("Masukkan jenis gambar (rectangle/triangle) atau 'exit' untuk keluar: ");
         scanf("%s", shape);
 
         // Periksa apakah pengguna ingin keluar
@@ -95,18 +76,6 @@ int main() {
             // Validasi ukuran segitiga
             if (validateSize(height, height)) {
                 drawTriangle(height);
-            }
-        }
-        // Meminta panjang untuk gambar diamond
-        else if (strcmp(shape, "diamond") == 0) {
-            printf("Masukkan ukuran (min %d, max %d): ", MIN_HEIGHT, MAX_HEIGHT);
-            scanf("%d", &height);
-
-            // Validasi ukuran diamond
-            if (height >= MIN_HEIGHT && height <= MAX_HEIGHT) {
-                drawDiamond(height);
-            } else {
-                printf("Ukuran diamond harus antara %d dan %d karakter.\n", MIN_HEIGHT, MAX_HEIGHT);
             }
         }
         else {
